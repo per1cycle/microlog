@@ -15,6 +15,9 @@ Markdown                         1              0              0              1
 SUM:                             9             39              5            137
 -------------------------------------------------------------------------------
 ```
+## prerequest
+cxx compiler support cpp standard >= 17
 
 ## usage
 see sample/InfoTest.cc
+
