@@ -4,9 +4,7 @@ project(Log)
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_STANDARD_REQUIRED 17)
 include_directories(
-  ${CMAKE_SOURCE_DIR}/include
+  release
 )
-
-add_subdirectory(src)
 
 add_subdirectory(sample)
