@@ -15,5 +15,5 @@ int main(int argc, char const *argv[]) {
   LOG_ERROR << "Not on window platform.";
 #endif
 
-      return 0;
+  return 0;
 }

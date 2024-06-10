@@ -1,11 +1,10 @@
 #ifndef LOG_HH
 #define LOG_HH
-#include <unistd.h>
 #include <string.h>
+#include <unistd.h>
 
 #include <memory>
 #include <sstream>
-
 
 #include <Timestamp.hh>
 
@@ -36,7 +35,8 @@ public:
 
 }; // class Log
 
-#define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
+#define __FILENAME__                                                           \
+  (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
 
 #define LOG_INFO Log(__FILENAME__, __LINE__, Level::INFO).stream()
 #define LOG_WARNING Log(__FILENAME__, __LINE__, Level::WARNING).stream()

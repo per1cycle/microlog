@@ -7,8 +7,9 @@ public:
   LogImpl(const char *file, int line, Level level)
       : file_(file), line_(line), level_(level), timestamp_() {
     char log_header[1024];
-    snprintf(log_header, sizeof(log_header), "[%s] %s\t%s:%d ", level_name[level_],
-             timestamp_.toFormatString().c_str(), file_, line_);
+    snprintf(log_header, sizeof(log_header), "[%s] %s\t%s:%d ",
+             level_name[level_], timestamp_.toFormatString().c_str(), file_,
+             line_);
     oss_ << log_header;
   }
 
@@ -31,7 +32,8 @@ public:
 };
 
 Log::Log() : impl_(new LogImpl(__FILE__, __LINE__, Level::INFO)) {}
-Log::Log(const char *file, int line, Level level) : impl_(new LogImpl(file, line, level)) {}
+Log::Log(const char *file, int line, Level level)
+    : impl_(new LogImpl(file, line, level)) {}
 
 Log::~Log() {
   impl_->finish();
