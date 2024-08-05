@@ -9,7 +9,7 @@
 #include <sstream>
 
 #define size_t unsigned long
-namespace TB {
+namespace pericycle {
 enum Level { INFO = 0, WARNING, ERROR, NUM };
 
 class Timestamp {
@@ -25,13 +25,11 @@ public:
   }
   std::string toString() {
     std::string tmp = std::to_string(now());
-
     return tmp;
   }
   std::string toFormatString() {
     auto now = std::chrono::system_clock::now();
     auto in_time_t = std::chrono::system_clock::to_time_t(now);
-
     std::stringstream ss;
     ss << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %X");
     return ss.str();
@@ -78,7 +76,6 @@ public:
   ~Log() {
     impl_->finish();
     std::string buffer(impl_->oss_.str());
-
     ::write(1, buffer.data(), buffer.size());
   }
 
@@ -96,7 +93,5 @@ public:
 #define LOG_INFO Log(__FILENAME__, __LINE__, Level::INFO).stream()
 #define LOG_WARNING Log(__FILENAME__, __LINE__, Level::WARNING).stream()
 #define LOG_ERROR Log(__FILENAME__, __LINE__, Level::ERROR).stream()
-
 #define LOG LOG_INFO
-
 } // namespace TB
