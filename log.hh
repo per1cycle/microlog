@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string.h>
-#include <unistd.h>
 
 #include <chrono>
 #include <iomanip>
@@ -76,7 +75,7 @@ public:
   ~Log() {
     impl_->finish();
     std::string buffer(impl_->oss_.str());
-    ::write(1, buffer.data(), buffer.size());
+    ::fwrite(buffer.data(), 1, buffer.size(), stdout);
   }
 
   std::ostream &stream() { return impl_->oss_; }
@@ -94,4 +93,5 @@ public:
 #define LOG_WARNING Log(__FILENAME__, __LINE__, Level::WARNING).stream()
 #define LOG_ERROR Log(__FILENAME__, __LINE__, Level::ERROR).stream()
 #define LOG LOG_INFO
+// #define SET_GLOBAL_LOG_LEVEL(LOG_LEVEL) todo
 } // namespace TB
